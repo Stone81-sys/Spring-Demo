@@ -28,6 +28,4 @@ public class People {
         return  name;
     }
 
-
-
 }

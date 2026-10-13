@@ -39,8 +39,6 @@ public class studyMVC {
         return kao;
     }
 
-
-
 }
 
 
