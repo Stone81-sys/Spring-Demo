@@ -38,7 +38,6 @@ public class studyMVC {
     public People kao(@RequestBody People kao){
         return kao;
     }
-
 }
 
 
