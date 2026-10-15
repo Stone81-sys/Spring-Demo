@@ -31,4 +31,13 @@ public class People {
     public String getName(String name) {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return "People{" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

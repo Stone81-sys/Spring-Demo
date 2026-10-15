@@ -1,10 +1,10 @@
 package com.kexiang.demo;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -35,8 +35,20 @@ public class studyMVC {
     }
 
     @RequestMapping("/r5")
-    public People kao(@RequestBody People kao){
-        return kao;
+    public Object kao(@RequestBody People person){
+        return person.toString();
+    }
+
+    @RequestMapping("/{tem}/{name}")
+    public String str(@PathVariable("tem") String tem,@PathVariable("name")String name ){
+        return tem+name;
+    }
+
+    @RequestMapping("/r7")
+    public String file1(@RequestPart MultipartFile fam) throws IOException {
+        String str=fam.getOriginalFilename();
+        fam.transferTo(new File("D:\\work"+str));
+        return str;
     }
 }
 
