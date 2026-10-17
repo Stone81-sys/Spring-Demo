@@ -59,19 +59,34 @@
             <span>说什么:</span> <input type="text" name="" id="say">
         </div>
         <input type="button" value="提交" id="submit" onclick="submit()">
+        
         <!-- <div>A 对 B 说: hello</div> -->
     </div>
 
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script>
- 
+
+        $.ajax({
+            url:"/wall/response",
+            type:"post",
+            success:function(reslut){
+                for(var list of reslut){
+                    "<div>"+list.from+"对"+list.to+"说"+list.say+"<div>"
+                }
+
+
+                return reslut;
+            }
+
+        })
+        
         function submit(){
             //1. 获取留言的内容
             var from = $('#from').val();
             var to = $('#to').val();
             var say = $('#say').val();
             if (from== '' || to == '' || say == '') {
-                return;
+                return alert("空的");
             }
             //2. 构造节点
             var divE = "<div>"+from +"对" + to + "说:" + say+"</div>";
@@ -84,6 +99,24 @@
             $('#say').val("");
             
         }
+
+        $.ajax({
+            url:"/wall/judge",
+            type:"get",
+            data:{
+                "from":$("#from").val,
+                "to":$("#to").val,
+                "say":$("say").val
+            },
+            success:function (reslut){
+                if(reslut){
+                    
+
+                }else{
+                    alert("添加失败")
+                }
+            }
+        })
         
     </script>
 </body>
