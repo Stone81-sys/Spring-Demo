@@ -63,23 +63,23 @@
         <!-- <div>A 对 B 说: hello</div> -->
     </div>
 
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="js\jquery.min.js"></script>
     <script>
-
-        $.ajax({
+        load();
+        function load(){
+            $.ajax({
             url:"/wall/response",
-            type:"post",
+            type:"get",
             success:function(reslut){
                 for(var list of reslut){
-                    "<div>"+list.from+"对"+list.to+"说"+list.say+"<div>"
+                    var dis="<div>"+list.from+"对"+list.to+"说"+list.say+"<div>";
                 }
 
-
-                return reslut;
+                $(".container").append(dis);
             }
-
         })
-        
+        }
+
         function submit(){
             //1. 获取留言的内容
             var from = $('#from').val();
@@ -102,11 +102,11 @@
 
         $.ajax({
             url:"/wall/judge",
-            type:"get",
+            type:"post",
             data:{
-                "from":$("#from").val,
-                "to":$("#to").val,
-                "say":$("say").val
+                from:from,
+                to:to,
+                say:say
             },
             success:function (reslut){
                 if(reslut){
