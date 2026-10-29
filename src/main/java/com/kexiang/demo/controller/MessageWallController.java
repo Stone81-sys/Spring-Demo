@@ -1,5 +1,6 @@
 package com.kexiang.demo.controller;
 
+import com.kexiang.demo.Service.MessageInfoService;
 import com.kexiang.demo.entity.MessageInfo;
 import com.kexiang.demo.mapper.MessageWallMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import java.util.List;
 public class MessageWallController {
 
     @Autowired
-    MessageWallMapper messageWallMapper;
+    MessageInfoService messageInfoService;
 
     @RequestMapping("/judge")
     public boolean judge(MessageInfo mess){
@@ -23,7 +24,8 @@ public class MessageWallController {
                 StringUtils.hasLength(mess.getTo())&&
                 StringUtils.hasLength(mess.getMessage())){
 
-            messageWallMapper.insertmesssql(mess);
+            messageInfoService.insertmesssql(mess);
+
             return true;
         }
     return false;
@@ -31,7 +33,7 @@ public class MessageWallController {
 
     @RequestMapping("/response")
     public List<MessageInfo> response(){
-        return messageWallMapper.selectmesssql();
+        return messageInfoService.selectmesssql();
 
     }
 

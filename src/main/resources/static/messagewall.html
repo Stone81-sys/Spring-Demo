@@ -66,57 +66,64 @@
     <script src="js\jquery.min.js"></script>
     <script>
         load();
+
         function load(){
             $.ajax({
             url:"/wall/response",
             type:"get",
             success:function(reslut){
                 for(var list of reslut){
-                    var dis="<div>"+list.from+"对"+list.to+"说"+list.say+"<div>";
+                    var dis="<div>"+list.from+"对"+list.to+"说"+list.message+"</div>";
+                    $(".container").append(dis);
+
                 }
 
-                $(".container").append(dis);
             }
-        })
+        });
         }
 
         function submit(){
             //1. 获取留言的内容
+
             var from = $('#from').val();
             var to = $('#to').val();
-            var say = $('#say').val();
-            if (from== '' || to == '' || say == '') {
+            var message = $('#say').val();
+            if (from== '' || to == '' || message == '') {
                 return alert("空的");
             }
             //2. 构造节点
-            var divE = "<div>"+from +"对" + to + "说:" + say+"</div>";
-            //3. 把节点添加到页面上    
+
+            var divE = "<div>"+from +"对" + to + "说:" + message+"</div>";
+            //3. 把节点添加到页面上
+
             $(".container").append(divE);
 
             //4. 清空输入框的值
+
             $('#from').val("");
             $('#to').val("");
             $('#say').val("");
-            
+
+
+            $.ajax({
+                url:"/wall/judge",
+                type:"post",
+                data:{
+                    from:from,
+                    to:to,
+                    message:message
+                },
+                success:function (reslut){
+                    if(reslut){
+
+                    }else{
+                        alert("添加失败")
+                    }
+                }
+            })
         }
 
-        $.ajax({
-            url:"/wall/judge",
-            type:"post",
-            data:{
-                from:from,
-                to:to,
-                say:say
-            },
-            success:function (reslut){
-                if(reslut){
-                    
 
-                }else{
-                    alert("添加失败")
-                }
-            }
-        })
         
     </script>
 </body>

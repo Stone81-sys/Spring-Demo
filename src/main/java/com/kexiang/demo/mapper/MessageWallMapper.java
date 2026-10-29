@@ -24,6 +24,6 @@ public interface MessageWallMapper {
     @Select("select  * from message_info")
     List<MessageInfo> selectmesssql() ;
 
-    @Insert("insert into message_info(`from`,`to`,`message`) values (#{from},#{to},#{message})")
+    @Insert("insert into message_info(`from`,`to`,`message` )values (#{from},#{to},#{message})")
     int insertmesssql(MessageInfo mess);
 }

@@ -3,6 +3,7 @@ package com.kexiang.demo.entity;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class MessageInfo {
@@ -23,7 +24,7 @@ public class MessageInfo {
     String to;
     String message;
     Integer deleteFlag;
-    LocalDateTime createTime;
-    LocalDateTime updateTime;
+    Date createTime;
+    Date updateTime;
 
 }
