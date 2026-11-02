@@ -1,6 +1,5 @@
-package com.kexiang.demo;
+package com.kexiang.demo.controller;
 
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

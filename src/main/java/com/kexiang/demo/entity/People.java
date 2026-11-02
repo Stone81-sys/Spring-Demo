@@ -1,4 +1,4 @@
-package com.kexiang.demo;
+package com.kexiang.demo.entity;
 
 public class People {
     Integer age;

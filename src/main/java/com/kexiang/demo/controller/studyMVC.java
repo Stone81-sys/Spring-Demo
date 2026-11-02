@@ -1,5 +1,6 @@
-package com.kexiang.demo;
+package com.kexiang.demo.controller;
 
+import com.kexiang.demo.entity.People;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -39,10 +40,10 @@ public class studyMVC {
         return person.toString();
     }
 
-    @RequestMapping("/{tem}/{name}")
-    public String str(@PathVariable("tem") String tem,@PathVariable("name")String name ){
-        return tem+name;
-    }
+//    @RequestMapping("/{tem}/{name}")
+//    public String str(@PathVariable("tem") String tem,@PathVariable("name")String name ){
+//        return tem+name;
+//    }
 
     @RequestMapping("/r7")
     public String file1(@RequestPart MultipartFile fam) throws IOException {

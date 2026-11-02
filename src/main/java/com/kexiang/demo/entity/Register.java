@@ -1,7 +1,5 @@
-package com.kexiang.demo;
+package com.kexiang.demo.entity;
 
-import com.sun.net.httpserver.HttpServer;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
